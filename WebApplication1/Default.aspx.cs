@@ -15,7 +15,7 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             string strCon = ConfigurationManager.ConnectionStrings["Animal_HouseConnectionString"].ConnectionString;
-            string sql = "Select * From PET_SIAZE  ";
+            string sql = "Select * From PET_SIAZE WHERE IS_ADOPT = 0 ";
             DataTable dt = new DataTable();
             SqlConnection sqlconn = new SqlConnection();
             SqlCommand sqlCmd = new SqlCommand(sql, sqlconn);
@@ -36,7 +36,7 @@ namespace WebApplication1
                     //string sID = dt.Rows[i]["ID"].ToString();
 
                     string sHtml = "<div style='text-align:center'>"; //置中
-                    sHtml += "<div><marquee style='width:500px'>公告事項：" + "[" + i + "]" + sDate + "</marquee></div>";
+                    sHtml += "<marquee style='width:500px'>公告事項：" + "[" + i + "]" + sDate + "</marquee>";
                     //跑馬燈
 
                     sHtml += "</div>";
@@ -83,12 +83,11 @@ namespace WebApplication1
             Sqldr.Close();
             if (dt.Rows.Count > 0)
             {
-
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     string sMail = dt.Rows[i]["ADOPTERS_MAIL"].ToString();
-                    string sTime = dt.Rows[i]["CREAT_DATE"].ToString();
-                    DateTime Datenow = DateTime.Now;
+                    string sTime = dt.Rows[i]["CREATE_DATE"].ToString();
+                    DateTime Datenow = DateTime.Now.AddDays(-180);
                     //算時間有沒有符合條件
                     if (true)//true 改成你的變數
                     {//send Mail function

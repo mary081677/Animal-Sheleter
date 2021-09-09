@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    <!-- <div>公告項目:
-        <div>
+        
             <marquee style="width:200px"> 1. 週六收書包</marquee>
         </div>
         <div>

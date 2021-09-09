@@ -95,7 +95,54 @@
                              Response.Write(sHtml);
                          }
                      }
-                %>  
+                %>
+
+                        <asp:Repeater ID="replist" runat="server" OnItemDataBound="replist_ItemDataBound">
+                <ItemTemplate>
+                    <div style='width: 280px; border: solid 1px black; float: left; margin: 20px 0px 0px 60px;'>
+                        <div style='width: 160px; margin: auto auto;'>
+                            <a href='<%# "Pet_Detail.aspx?ID=" + Eval("ID") + "&Type=E" %>'>
+                                <img src='Image/02.jpg' />
+                            </a>
+                        </div>
+                        <div>
+                            <div>
+                                <asp:Literal runat="server" ID="ltPetType">類別:</asp:Literal>
+                                <lable>類別：
+
+                                    <%#
+                                        (((int)Eval("PET_TYPE") == 0) 
+                                            ? "貓" 
+                                            : "狗")
+                                    %>
+                                </lable></div>
+                            <div>
+                                <asp:Literal ID="ltPet_Variety" runat="server"></asp:Literal>
+                                <lable>品種： 
+                                    <%# 
+                                        ((string)Eval("PET_VARIETY ")) 
+                                    %> 
+                                </lable></div>
+                            <div>
+                                <lable>性別：
+                                    <%#
+                                        (((int)Eval("PET_SEX") == 0) 
+                                            ? "公" 
+                                            : "母")
+                                    %>
+                                </lable></div>
+                            <div>
+                                <asp:Literal ID="ltIS_Adopt" runat="server"></asp:Literal>
+                                <lable>領養狀態：
+                                    <%#
+                                        (((int)Eval("IS_Adopt") == 0) 
+                                            ? "已領養" 
+                                            : "未領養")
+                                    %>
+                                </lable></div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>      
     </div>
     <uc1:ucPager runat="server" id="ucPager" />
