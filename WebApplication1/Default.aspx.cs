@@ -20,6 +20,7 @@ namespace WebApplication1
             SqlConnection sqlconn = new SqlConnection();
             SqlCommand sqlCmd = new SqlCommand(sql, sqlconn);
 
+
             sqlconn.ConnectionString = strCon;
             sqlconn.Open();
 
